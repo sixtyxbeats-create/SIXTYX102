@@ -1,4 +1,4 @@
-name: Build STEINEX TRANSIT FX (Windows VST3)
+name: Build STEINEX TRANSIT FX
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
 
 jobs:
   build:
-        runs-on: windows-2022
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configure (JUCE 8.0.4 is downloaded automatically)
+      - name: Configure
         run: cmake -B build -G "Visual Studio 17 2022" -A x64
 
-      - name: Build VST3 (Release)
+      - name: Build VST3
         run: cmake --build build --config Release --target TransitFX_VST3 --parallel
 
       - name: Upload plugin
